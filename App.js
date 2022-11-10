@@ -11,14 +11,18 @@ export default function App() {
     try {
       let p = fetchAsync(url);
       p.then((message) => {
-        console.log("this is in the then " + message.category)
-        alert(message.delivery);
-        alert(message.setup);
+        if (message.type === "single") {
+          alert(message.joke)
+        }
+        else {
+          alert(message.delivery);
+          alert(message.setup);
+        }
       }).catch((message) => {
-        console.log("this is in the catch " + message)
+        console.log("Caught: " + message)
       })
     } catch (e) {
-      console.log(e);
+      console.log("Error: " + e);
     }
     // const { foo, bar }  = await response.then(result => result.data);
     // console.log(foo);
